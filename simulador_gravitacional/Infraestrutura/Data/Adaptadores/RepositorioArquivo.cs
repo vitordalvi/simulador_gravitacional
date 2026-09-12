@@ -10,7 +10,32 @@ public class RepositorioArquivo : RepositorioUniverso
     
     public override void Salvar(Universo universo)
     {
-        throw new NotImplementedException();
+        if (!AmbienteExiste())
+        {
+            CriarAmbiente();
+        }
+
+        string caminhoArquivo = Path.Combine(_caminhoPastaDb, "arquivo.txt");
+
+        using (StreamWriter writer = new StreamWriter(caminhoArquivo, false))
+        {
+            try
+            {
+                writer.WriteLine(
+                    $"{universo.Corpos.Count};{universo.QuantidadeIteracoes};{universo.TempoEntreIteracoes}");
+
+                foreach (var corpo in universo.Corpos)
+                {
+                    writer.WriteLine(
+                        $"{corpo.Nome};{corpo.Massa};{corpo.Densidade};{corpo.PosX};{corpo.PosY};{corpo.VelX};{corpo.VelY}");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao tentar salvar o arquivo.", ex);
+            }
+        }
+        
     }
 
     public override Universo Carregar()
@@ -28,6 +53,8 @@ public class RepositorioArquivo : RepositorioUniverso
 
         Universo universo = new Universo();
         List<Corpo> Corpos = new List<Corpo>();
+        int quantidadeIteracoes = 0;
+        DateTime tempoEntreIteracoes = new DateTime();
 
         foreach (string linha in linhas)
         {
@@ -40,6 +67,9 @@ public class RepositorioArquivo : RepositorioUniverso
 
             if (PrimeiraLinha)
             {
+                quantidadeIteracoes = int.Parse(partes[1]);
+                tempoEntreIteracoes = DateTime.Parse(partes[2]);
+                
                 Console.WriteLine($"Carregando as informações do Universo:");
                 Console.WriteLine($"Quantidade de Corpos: {partes[0]}\n" +
                                   $"Quantidade de Iterações: {partes[1]}" +
@@ -60,12 +90,13 @@ public class RepositorioArquivo : RepositorioUniverso
             
             Corpo corpo = new Corpo(NomeCorpo, Massa, Densidade, PosX, PosY, VelX, VelY);
             Corpos.Add(corpo);
-            
-            
         }
         
-        throw new NotImplementedException();
-        //return new Universo();
+        universo.Corpos = Corpos;
+        universo.QuantidadeIteracoes = quantidadeIteracoes;
+        universo.TempoEntreIteracoes = tempoEntreIteracoes;
+        
+        return new Universo();
     }
 
     private bool CriarAmbiente()
