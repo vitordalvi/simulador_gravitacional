@@ -1,4 +1,4 @@
-using simulador_gravitacional.Entities;
+using simulador_gravitacional.Entidades;
 using simulador_gravitacional.Infraestrutura.Repositorios;
 
 namespace simulador_gravitacional.Infraestrutura.Data.Adaptadores;

@@ -1,4 +1,4 @@
-namespace simulador_gravitacional.Entities;
+namespace simulador_gravitacional.Entidades;
 
 public class Corpo
 {
