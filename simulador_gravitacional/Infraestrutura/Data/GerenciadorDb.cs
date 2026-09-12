@@ -3,7 +3,7 @@ using simulador_gravitacional.Infraestrutura.Repositorios;
 
 namespace simulador_gravitacional.Infraestrutura.Data;
 
-public abstract class GerenciadorDb
+public class GerenciadorDb
 {
     public static RepositorioUniverso Iniciar(TipoPersistencia tipoPersistencia)
     {
