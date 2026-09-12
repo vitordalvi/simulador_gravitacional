@@ -70,7 +70,7 @@ public class RepositorioArquivo : RepositorioUniverso
                 quantidadeIteracoes = int.Parse(partes[1]);
                 tempoEntreIteracoes = double.Parse(partes[2]);
                 
-                Console.WriteLine($"Carregando as informações do Universo:");
+                Console.WriteLine($"--- Carregando as informações do Universo ---");
                 Console.WriteLine($"Quantidade de Corpos: {partes[0]}\n" +
                                   $"Quantidade de Iterações: {partes[1]}" +
                                   $"Tempo entre iterações: {partes[2]}");
