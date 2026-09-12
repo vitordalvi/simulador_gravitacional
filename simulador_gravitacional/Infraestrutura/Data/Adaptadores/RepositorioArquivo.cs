@@ -15,7 +15,7 @@ public class RepositorioArquivo : RepositorioUniverso
             CriarAmbiente();
         }
 
-        string caminhoArquivo = Path.Combine(_caminhoPastaDb, "arquivo.txt");
+        string caminhoArquivo = Path.Combine(_caminhoPastaDb, "universo.txt");
 
         using (StreamWriter writer = new StreamWriter(caminhoArquivo, false))
         {
@@ -95,7 +95,7 @@ public class RepositorioArquivo : RepositorioUniverso
         universo.QuantidadeIteracoes = quantidadeIteracoes;
         universo.TempoEntreIteracoes = tempoEntreIteracoes;
         
-        return new Universo();
+        return universo;
     }
 
     private bool CriarAmbiente()
