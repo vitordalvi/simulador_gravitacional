@@ -54,7 +54,7 @@ public class RepositorioArquivo : RepositorioUniverso
         Universo universo = new Universo();
         List<Corpo> corpos = new List<Corpo>();
         int quantidadeIteracoes = 0;
-        DateTime tempoEntreIteracoes = new DateTime();
+        double tempoEntreIteracoes = 0;
 
         foreach (string linha in linhas)
         {
@@ -68,7 +68,7 @@ public class RepositorioArquivo : RepositorioUniverso
             if (PrimeiraLinha)
             {
                 quantidadeIteracoes = int.Parse(partes[1]);
-                tempoEntreIteracoes = DateTime.Parse(partes[2]);
+                tempoEntreIteracoes = double.Parse(partes[2]);
                 
                 Console.WriteLine($"Carregando as informações do Universo:");
                 Console.WriteLine($"Quantidade de Corpos: {partes[0]}\n" +
