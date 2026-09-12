@@ -4,7 +4,13 @@ public class Universo
 {
     public List<Corpo> Corpos { get; set; }
     public int QuantidadeIteracoes { get; set; }
-    public DateTime TempoEntreIteracoes { get; set; } // Transformar isso no get {} com a funcao retornando direto o tempo entre cada iteracao (iteracao - datetime.now) algo assim
+
+    public DateTime
+        TempoEntreIteracoes
+    {
+        get;
+        set;
+    } // Transformar isso no get {} com a funcao retornando direto o tempo entre cada iteracao (iteracao - datetime.now) algo assim
 
     private void CalcularForcas()
     {
