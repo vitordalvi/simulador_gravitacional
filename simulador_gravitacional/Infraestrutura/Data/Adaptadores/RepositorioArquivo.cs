@@ -52,7 +52,7 @@ public class RepositorioArquivo : RepositorioUniverso
         bool PrimeiraLinha = true;
 
         Universo universo = new Universo();
-        List<Corpo> Corpos = new List<Corpo>();
+        List<Corpo> corpos = new List<Corpo>();
         int quantidadeIteracoes = 0;
         DateTime tempoEntreIteracoes = new DateTime();
 
@@ -76,23 +76,22 @@ public class RepositorioArquivo : RepositorioUniverso
                                   $"Tempo entre iterações: {partes[2]}");
                 
                 PrimeiraLinha = false;
+                continue;
             }
-            
-            // Vai dar b.o se for as primeiras linhas (universo) eu acho, possivelmente corrigir
 
-            string NomeCorpo = partes[0];
-            double Massa =  double.Parse(partes[1]);
-            double Densidade = double.Parse(partes[2]);
-            double PosX = double.Parse(partes[3]);
-            double PosY = double.Parse(partes[4]);
-            double VelX = double.Parse(partes[5]);
-            double VelY = double.Parse(partes[6]);
+            string nomeCorpo = partes[0];
+            double massa =  double.Parse(partes[1]);
+            double densidade = double.Parse(partes[2]);
+            double posX = double.Parse(partes[3]);
+            double posY = double.Parse(partes[4]);
+            double velX = double.Parse(partes[5]);
+            double velY = double.Parse(partes[6]);
             
-            Corpo corpo = new Corpo(NomeCorpo, Massa, Densidade, PosX, PosY, VelX, VelY);
-            Corpos.Add(corpo);
+            Corpo corpo = new Corpo(nomeCorpo, massa, densidade, posX, posY, velX, velY);
+            corpos.Add(corpo);
         }
         
-        universo.Corpos = Corpos;
+        universo.Corpos = corpos;
         universo.QuantidadeIteracoes = quantidadeIteracoes;
         universo.TempoEntreIteracoes = tempoEntreIteracoes;
         
